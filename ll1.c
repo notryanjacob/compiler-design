@@ -1,3 +1,4 @@
+// ll1 uses parsing table. recursive descent parser user if/else to determine parsing
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -41,6 +42,7 @@ void E_prime()
         T();
         E_prime();
     }
+    // E' -> e (do nothing)
 }
 // fn T -> FT'
 void T()
@@ -48,6 +50,7 @@ void T()
     F();
     T_prime();
 }
+// fn T' -> *FT' | e
 void T_prime()
 {
     if (lookahead == '*')
@@ -56,6 +59,7 @@ void T_prime()
         F();
         T_prime();
     }
+    // else do nothing T -> e
 }
 // F -> (E) | id
 void F()
